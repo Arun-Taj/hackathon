@@ -53,7 +53,13 @@
 							<a href="{% url 'index' %}">HOME</a>
 							<a href="{% url 'about_us' %}">ABOUT US</a>
 							<a href="{% url 'register' %}">REGISTER</a>
+							
+							{% if user.is_authenticated %}
+							<a href="{% url 'logout' %}">LOG OUT</a>
+							<a href="{% url 'add_data' %}">ADD DATA</a>
+							{% else %}
 							<a href="{% url 'sign_in' %}">SIGN IN</a>
+							{% endif %}
 
 						</font>
 					</td>
@@ -168,8 +174,10 @@ In hac habitasse platea dictumst. Praesent condimentum justo justo, at ultricies
 					fast response.</p>
 
 			</div>
-			<button type="submit" class="btn btn-outline-secondary mb-4">Predict Here</button>
+			<a href="{% url 'predict' %}"><button type="submit" class="btn btn-outline-secondary mb-4">Predict Here</button></a>
 		</div>
+
+		
 
 		<div class="card">
 			<div class="img-holder">

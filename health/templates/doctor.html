@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>Data in!</title>
+</head>
+<body>
+    <h1>Data here!!</h1>
+    <form action="{% url 'add_data' %}" method='POST' >
+
+        {% csrf_token %}
+        <!-- Headings for the form -->
+        <div class="headingsContainer">
+            <h3>Data in</h3>
+            <!-- <p>Sign in with your username and password</p> -->
+        </div>
+
+        <!-- Main container for all inputs -->
+        <div class="mainContainer">
+            <!-- Username -->
+            <label for="diseases">Enter Diseases</label>
+            <input type="text" placeholder="Enter Diseases" name="diseases" required>
+
+            <br><br>
+
+            <!-- Password -->
+            <label for="symptoms">Enter  symptoms</label>
+            <input type="text" placeholder="Enter  symptoms" name="symptoms" required>
+
+
+            <label for="medicine">Enter Medicine</label>
+            <input type="text" placeholder="Enter Medicine" name="medicine" required>
+
+            <!-- sub container for the checkbox and forgot password link -->
+            <!-- Submit button -->
+            <button type="submit">ADD DATA</button>
+
+
+        </div>
+
+    </form>
+</body>
+</html>

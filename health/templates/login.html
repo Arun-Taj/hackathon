@@ -11,7 +11,8 @@
 </head>
 <body>
     <h1>Login here</h1>
-    <form action="">
+    <form action="{% url 'sign_in' %}" method="POST">
+        {% csrf_token %}
         <!-- Headings for the form -->
         <div class="headingsContainer">
             <h3>Sign in</h3>
@@ -28,7 +29,7 @@
 
             <!-- Password -->
             <label for="pswrd">Your password</label>
-            <input type="password" placeholder="Enter Password" name="pswrd" required>
+            <input type="password" placeholder="Enter Password" name="password" required>
 
             <!-- sub container for the checkbox and forgot password link -->
            

@@ -1,0 +1,61 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <!-- <title>Login page in HTML</title> -->
+</head>
+<style>
+    .predict{
+        text-align: center;
+        /* border: 2px solid red; */
+        width: 20rem;
+        margin: 2rem auto;
+    }
+</style>
+<body>
+    <h1>Symptoms here!</h1>
+    <form action="{% url 'manipulate' %}" method="POST">
+        <!-- Headings for the form -->
+        
+        {% csrf_token %}
+
+        <!-- Main container for all inputs -->
+        <div class="mainContainer">
+            <!-- Username -->
+            <label for="symptoms">Enter  Symptoms</label><br>
+            <input style="height:80px;" type="text" placeholder="Enter symptoms" name="symptoms" required>
+
+            <br><br>
+
+            <!-- Password -->
+          
+
+
+            <!-- Submit button -->
+            <button type="submit">Submit</button>
+
+           
+        </div>
+
+    </form>
+    <div class="predict">
+    {% if disease_name  %}
+        <h2>Predict Disease:</h2>
+        {{disease_name}}
+    {% endif %}
+
+    {% if medicine_name  %}
+    <h2>Predict Medicine:</h2>
+    {{medicine_name}}
+    {% endif %}
+  
+
+</div>
+</body>
+</html>
