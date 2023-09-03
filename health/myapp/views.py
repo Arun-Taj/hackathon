@@ -1,10 +1,12 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 from . predictDiseaseModule import predict_disease
 from . models import Registerform
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib import messages
 import csv
+from django.core.mail import EmailMessage
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
@@ -47,7 +49,7 @@ def sign_in(request):
        if user is not None:
            login(request, user)
            messages.success(request, 'login successful. You can now log in.')
-           return redirect('sign_in')
+           return redirect('index')
        
        else:
            messages.success(request, "login un successful. You can't now log in.")
@@ -92,7 +94,7 @@ def logout_view(request):
 
 
 
-
+@login_required(login_url='sign_in')
 def add_data(request):
     # Collect data from the form or user input
     if request.method=='POST':
@@ -122,8 +124,35 @@ def add_data(request):
 
 
 
+def ask_here(request):
+    if request.method == 'POST':
+       print('hello world')
+    #     print('hello')
+    # # Gather user data (replace with your data source)
+       symptoms=request.POST['symptoms']
+       age=request.POST['age']
+       dayselapsed=request.POST['dayselapsed']
+       email=request.POST['email']
+
     
+       subject = 'User Data Submission'
+       body = f"Your '\nEmail: {email}, symptoms:{symptoms},age:{age},dayselapsed:{dayselapsed}"
+       from_email = 'aruntajpuriya1@gmail.com'  # Replace with your email address
+       recipient_list = ['bishalmurmu150@gmail.com']  # Replace with the static email address
+
+       email = EmailMessage(subject, body, from_email, recipient_list)
+       
+       try:
+          email.send()
+          return HttpResponse("User data sent successfully.")
+       except Exception as e:
+          return HttpResponse(f"An error occurred: {str(e)}")
+    
+       
+
+    # 
+    else:
+       return  render(request,'ask.html')
 
 
         
-   

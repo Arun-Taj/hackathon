@@ -1,0 +1,58 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <!-- <title>Login page in HTML</title> -->
+</head>
+<body>
+    <h1>Ask Doctor here!</h1>
+    <form action="{% url 'ask_here' %}" method="POST">
+        <!-- Headings for the form -->
+        {% csrf_token %}
+        
+        
+
+        <!-- Main container for all inputs -->
+        <div class="mainContainer">
+            <!-- Username -->
+            <label for="symptoms">Enter  Symptoms</label><br>
+            <input style="height:80px;" type="text" placeholder="Enter symptoms" name="symptoms" required>
+
+            <br><br>
+            
+  <!-- Username -->
+  <label for="age">Enter  Age</label><br>
+  <input  type="text" placeholder="Enter Age" name="age" required>
+
+  <br><br>
+  
+  <!-- Username -->
+  <label for="days elapsed">Enter  days elapsed</label><br>
+  <input  type="text" placeholder="Enter elapsed" name="dayselapsed" required>
+
+  <br><br>
+    <!-- Username -->
+    <label for="email">Enter  User mail:</label><br>
+    <input  type="email" placeholder="Enter email" name="email" required>
+  
+    <br><br>
+    
+
+            <!-- Password -->
+          
+
+
+            <!-- Submit button -->
+            <button type="submit">Submit</button>
+
+           
+        </div>
+
+    </form>
+</body>
+</html>

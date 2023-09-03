@@ -13,5 +13,5 @@ urlpatterns = [
     path('manipulate/',views.manipulate,name='manipulate'),
     path('logout/',views.logout_view,name='logout'),
     path('add_data/',views.add_data,name='add_data'),
-
+    path('add_here/',views.ask_here,name='ask_here'),
 ]
