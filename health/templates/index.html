@@ -1,5 +1,6 @@
 
 {% load static %}
+
 <html>
 
 <head>
@@ -49,10 +50,10 @@
 					</td>
 					<td> <br> <br>
 						<font size="4px">
-							<a href="index.html">HOME</a>
-							<a href="about.html">ABOUT US</a>
-							<a href="register.html">REGISTER</a>
-							<a href="login.html">SIGN IN</a>
+							<a href="{% url 'index' %}">HOME</a>
+							<a href="{% url 'about_us' %}">ABOUT US</a>
+							<a href="{% url 'register' %}">REGISTER</a>
+							<a href="{% url 'sign_in' %}">SIGN IN</a>
 
 						</font>
 					</td>
