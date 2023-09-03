@@ -1,0 +1,21 @@
+disease,symptoms,medicine
+Influenza,"Fever, Cough, Fatigue",Paracetamol
+Migraine,"Headache, Nausea, Sensitivity to Light",Ibuprofen
+Anemia,"Fatigue, Weakness, Pale Skin",Iron Supplements
+Asthma,"Shortness of Breath, Wheezing, Coughing",Albuterol
+Gastroenteritis,"Nausea, Vomiting, Diarrhea",Ondansetron
+Angina,"Chest Pain, Shortness of Breath, Fatigue",Nitroglycerin
+Arthritis,"Joint Pain, Stiffness, Swelling",NSAIDs
+Allergic Reaction,"Rash, Itching, Swelling",Antihistamines
+Gastritis,"Stomach Pain, Nausea, Vomiting",Proton Pump Inhibitors
+Strep Throat,"Sore Throat, Difficulty Swallowing, Fever",Antibiotics
+Vertigo,"Dizziness, Nausea, Balance Problems",Meclizine
+Pneumonia,"Difficulty Breathing, Chest Pain, Fever",Antibiotics
+Myasthenia Gravis,"Muscle Weakness, Fatigue, Double Vision",Pyridostigmine
+Tuberculosis,"Cough with Blood, Weight Loss, Fatigue",Combination Therapy
+Edema,"Swelling, Fluid Retention, Puffy Skin",Diuretics
+Constipation,"Abdominal Discomfort, Infrequent Bowel Movements",Laxatives
+Myopia,"Blurred Vision, Difficulty Focusing",Eyeglasses
+Diabetes,"Excessive Thirst, Frequent Urination, Fatigue",Insulin
+
+Common Cold,"Cough, Sore Throat, Runny Nose",Dextromethorphan
