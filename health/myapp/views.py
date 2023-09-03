@@ -3,6 +3,7 @@ from . predictDiseaseModule import predict_disease
 from . models import Registerform
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+from django.contrib import messages
 import csv
 # Create your views here.
 
@@ -28,13 +29,10 @@ def register(request):
         if password==conf_password:
            user_create=Registerform(user_name=user_name,password=password,img=img)
            user_create.save()
-           return redirect('index')
+           messages.success(request, 'Registration successful. You can now log in.')
+           return redirect('register')
         else:
-            context={
-                'error':True
-            }
-        
-            return render(request,'register.html',context)
+            messages.error(request, 'Registration failed. Please correct the errors below.')
       
         
     return render(request,'register.html')
@@ -48,10 +46,11 @@ def sign_in(request):
        user = authenticate(request, username=username, password=password)
        if user is not None:
            login(request, user)
-           return redirect('index')
+           messages.success(request, 'login successful. You can now log in.')
+           return redirect('sign_in')
+       
        else:
-           # Return an 'invalid login' error message.
-           pass
+           messages.success(request, "login un successful. You can't now log in.")
         
     return render(request,'login.html')
 

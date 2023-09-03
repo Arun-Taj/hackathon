@@ -18,6 +18,13 @@
         <div class="headingsContainer">
             <h3>Register in</h3>
             <!-- <p>Sign in with your username and password</p> -->
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }} text-danger" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
         </div>
 
         <!-- Main container for all inputs -->
