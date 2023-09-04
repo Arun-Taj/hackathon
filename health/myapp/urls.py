@@ -9,9 +9,8 @@ urlpatterns = [
     path('about_us/',views.about_us,name='about_us'),
     path('register/',views.register,name='register'),
     path('sign_in/',views.sign_in,name='sign_in'),
-    path('predict/',views.predict,name='predict'),
-    path('manipulate/',views.manipulate,name='manipulate'),
+    path('predict/',views.manipulate,name='predict'),
     path('logout/',views.logout_view,name='logout'),
     path('add_data/',views.add_data,name='add_data'),
-    path('add_here/',views.ask_here,name='ask_here'),
+    path('ask_here/',views.ask_here,name='ask_here'),
 ]
