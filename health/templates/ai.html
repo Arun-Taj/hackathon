@@ -20,7 +20,7 @@
 </style>
 <body>
     <h1>Symptoms here!</h1>
-    <form action="{% url 'manipulate' %}" method="POST">
+    <form action="{% url 'predict' %}" method="POST">
         <!-- Headings for the form -->
         
         {% csrf_token %}
@@ -29,7 +29,7 @@
         <div class="mainContainer">
             <!-- Username -->
             <label for="symptoms">Enter  Symptoms</label><br>
-            <input style="height:80px;" type="text" placeholder="Enter symptoms" name="symptoms" required>
+            <input style="height:80px;" type="text" placeholder=" eg)cough,headache" name="symptoms" required>
 
             <br><br>
 
@@ -45,6 +45,9 @@
 
     </form>
     <div class="predict">
+    {% if error %}
+    <h2>Our model couldnot predict your data ,for more query ask <a href="{% url 'ask_here' %}">here</a></h2>
+    {% endif %}
     {% if disease_name  %}
         <h2>Predict Disease:</h2>
         {{disease_name}}

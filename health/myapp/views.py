@@ -1,12 +1,11 @@
-from django.shortcuts import render,redirect,HttpResponse
+from django.shortcuts import render,redirect
 from . predictDiseaseModule import predict_disease
 from . models import Registerform
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib import messages
+from .csvchecker import csvcheck
 import csv
-from django.core.mail import EmailMessage
-from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
@@ -49,7 +48,7 @@ def sign_in(request):
        if user is not None:
            login(request, user)
            messages.success(request, 'login successful. You can now log in.')
-           return redirect('index')
+           return redirect('sign_in')
        
        else:
            messages.success(request, "login un successful. You can't now log in.")
@@ -69,9 +68,19 @@ def predict(request):
 def manipulate(request):
     result=None
     medicine_name=None
+    disease_name=None
     if request.method=='POST':
-        symptoms=request.POST['symptoms'].split('\n')
+        symptoms=request.POST['symptoms'].split(',')
+        print("splitted",symptoms)
+        
         if symptoms[0]!='':
+            if not csvcheck(symptoms):
+                print("show this erro here")
+                context={
+                    'error':True
+                }
+                return render(request,'ai.html',context) 
+            print(csvcheck(symptoms))
             result=predict_disease(symptoms)
             medicine_name=result['predicted_medicine'][0]
             disease_name=result['predicted_disease'][0]
@@ -94,7 +103,7 @@ def logout_view(request):
 
 
 
-@login_required(login_url='sign_in')
+
 def add_data(request):
     # Collect data from the form or user input
     if request.method=='POST':
@@ -121,8 +130,6 @@ def add_data(request):
     return render(request,'doctor.html')
 
    
-
-
 
 def ask_here(request):
     if request.method == 'POST':
@@ -155,4 +162,9 @@ def ask_here(request):
        return  render(request,'ask.html')
 
 
+
+    
+
+
         
+   
